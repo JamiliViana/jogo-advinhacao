@@ -1,0 +1,22 @@
+<div>
+    <h1>Jogo de adivinhação</h1>
+
+    <div class="letreiro">
+        <p>Palavra: {{ palavraAdvinhada.join(' ') }}</p>
+    </div>
+
+    <div class="quantidadeChutes">
+        <p>Chutes restantes: {{ chutesRestantes }}</p>
+    </div>
+
+    <div class="erros">
+        <p>Chutes errados: {{ chutesErrados.join(' - ') }}</p>
+    </div>
+
+    <div class="intefaceAdivinhacao">
+        <label for="letraInput">Digite uma letra:</label>
+        <input id="letraInput" type="text" maxlength="1" [(ngModel)]="letraChute" />
+        <button (click)="realizarChute()">Chutar</button>
+    </div>
+
+</div>
