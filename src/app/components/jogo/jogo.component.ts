@@ -10,13 +10,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './jogo.component.css'
 })
 export class JogoComponent {
-  palavraSecreta = "Oi";
+  palavraSecreta = "banana";
   chutesRestantes = this.palavraSecreta.length * 2;
   chutesErrados: string[] = [];
   palavraAdvinhada: string[] = [];
   letraChute: string = "";
 
   constructor() {
+    this.palavraSecreta = this.palavraSecreta.toUpperCase();
     this.iniciarPalavraAdvinhada();
   }
 
@@ -27,16 +28,22 @@ export class JogoComponent {
   }
 
   realizarChute() {
-    this.letraChute.toUpperCase();
+    this.letraChute = this.letraChute.toUpperCase();
     if (this.chutesErrados.includes(this.letraChute)) {
-      alert("Letra já chutada. Tente outra.");
+      alert("Letra já chutada! Tente outra.");
       return;
     }
+
     if (this.chutesRestantes > 0) {
       let acertou = false;
 
       for (let i = 0; i < this.palavraSecreta.length; i++) {
         if (this.palavraSecreta[i] === this.letraChute) {
+          if (this.palavraAdvinhada[i] === this.letraChute) {
+            alert("Letra já advinhada corretamente. Tente outra.");
+            return;
+          }
+
           this.palavraAdvinhada[i] = this.letraChute;
           acertou = true;
         }
