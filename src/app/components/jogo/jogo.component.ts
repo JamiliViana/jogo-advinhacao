@@ -1,34 +1,55 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-jogo',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './jogo.component.html',
   styleUrl: './jogo.component.css'
 })
 export class JogoComponent {
-  palavraSecreta = "banana";
-  chutesRestantes = this.palavraSecreta.length * 2;
+  palavras: string[] = ["oi", "bi", "ai", "to", "ca", "bo"];
+  palavraSecreta: string = "";
+  chutesRestantes: number = 0;
   chutesErrados: string[] = [];
   palavraAdvinhada: string[] = [];
   letraChute: string = "";
+  jogoTerminado: boolean = false;
+  mensagemFimDeJogo: string = "";
 
   constructor() {
-    this.palavraSecreta = this.palavraSecreta.toUpperCase();
     this.iniciarPalavraAdvinhada();
+    this.novaRodada();
+  }
+
+  escolherPalavraAleatoria(): void {
+    const indicePalavra = Math.floor(Math.random() * this.palavras.length);
+    this.palavraSecreta = this.palavras[indicePalavra].toUpperCase();
   }
 
   iniciarPalavraAdvinhada() {
-    for (let i = 0; i < this.palavraSecreta.length; i++) {
-      this.palavraAdvinhada.push('_');
-    }
+    this.palavraAdvinhada = Array(this.palavraSecreta.length).fill('_');
+  }
+
+  novaRodada(): void {
+    this.escolherPalavraAleatoria();
+    this.iniciarPalavraAdvinhada();
+    this.chutesRestantes = this.palavraSecreta.length * 2;
+    this.chutesErrados = [];
+    this.jogoTerminado = false;
   }
 
   realizarChute() {
     this.letraChute = this.letraChute.toUpperCase();
+
+    if (this.jogoTerminado) {
+      alert("O jogo já terminou. Clique em 'Jogar Novamente' para reiniciar.");
+      return;
+    }
+
     if (this.chutesErrados.includes(this.letraChute)) {
       alert("Letra já chutada! Tente outra.");
       return;
@@ -56,9 +77,12 @@ export class JogoComponent {
       this.chutesRestantes--;
 
       if (this.palavraAdvinhada.join('') === this.palavraSecreta) {
-        alert("Parabéns! Você acertou a palavra secreta!");
+        this.mensagemFimDeJogo = "Parabéns! Você acertou a palavra secreta!";
+        this.jogoTerminado = true;
+
       } else if (this.chutesRestantes === 0) {
-        alert("Você perdeu! A palavra secreta era: " + this.palavraSecreta);
+        this.mensagemFimDeJogo = "Você perdeu! A palavra secreta era: " + this.palavraSecreta;
+        this.jogoTerminado = true;
       }
     }
   }
