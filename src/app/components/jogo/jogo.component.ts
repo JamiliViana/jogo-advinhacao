@@ -11,7 +11,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './jogo.component.css'
 })
 export class JogoComponent {
-  palavras: string[] = ["oi", "bi", "ai", "to", "ca", "bo"];
+  palavras: string[] = ["casa", "bola", "pano", "gato",
+    "mesa", "folha", "carro", "pedra", "janela", "cebola",
+    "mala", "pilha", "mochila", "foca", "lobo", "banana"];
   palavraSecreta: string = "";
   chutesRestantes: number = 0;
   chutesErrados: string[] = [];
@@ -25,11 +27,6 @@ export class JogoComponent {
     this.novaRodada();
   }
 
-  escolherPalavraAleatoria(): void {
-    const indicePalavra = Math.floor(Math.random() * this.palavras.length);
-    this.palavraSecreta = this.palavras[indicePalavra].toUpperCase();
-  }
-
   iniciarPalavraAdvinhada() {
     this.palavraAdvinhada = Array(this.palavraSecreta.length).fill('_');
   }
@@ -40,6 +37,11 @@ export class JogoComponent {
     this.chutesRestantes = this.palavraSecreta.length * 2;
     this.chutesErrados = [];
     this.jogoTerminado = false;
+  }
+
+  escolherPalavraAleatoria(): void {
+    const indicePalavra = Math.floor(Math.random() * this.palavras.length);
+    this.palavraSecreta = this.palavras[indicePalavra].toUpperCase();
   }
 
   realizarChute() {
