@@ -74,9 +74,8 @@ export class JogoComponent {
 
       if (!acertou) {
         this.chutesErrados.push(this.letraChute);
+        this.chutesRestantes--;
       }
-
-      this.chutesRestantes--;
 
       if (this.palavraAdvinhada.join('') === this.palavraSecreta) {
         this.mensagemFimDeJogo = "Parabéns! Você acertou a palavra secreta!";

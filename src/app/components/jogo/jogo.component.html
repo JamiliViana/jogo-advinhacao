@@ -16,12 +16,13 @@
 
         <div class="intefaceAdivinhacao">
             <label for="letraInput">Digite uma letra:</label>
-            <input id="letraInput" type="text" maxlength="1" [(ngModel)]="letraChute" />
-            <button (click)="realizarChute()">Chutar</button>
+            <input id="letraInput" type="text" maxlength="1" (keyup.enter)="realizarChute()" [(ngModel)]="letraChute"
+                name="letraChute" placeholder="Digite uma letra" />
+            <button type="submit" (click)="realizarChute()">Chutar</button>
         </div>
     </div>
 
-    <div *ngIf="jogoTerminado">
+    <div class="jogoTerminou" *ngIf="jogoTerminado">
         <p *ngIf="!jogoTerminado">Palavra Secreta: {{ palavraSecreta }}</p>
         <p *ngIf="jogoTerminado">{{ mensagemFimDeJogo }}</p>
         <button (click)="novaRodada()">Jogar Novamente</button>
