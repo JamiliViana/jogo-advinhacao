@@ -1,13 +1,17 @@
-<div>
+<div class="jogoContainer">
     <h1>Jogo de adivinhação</h1>
 
-    <div *ngIf="!jogoTerminado">
-        <div class="letreiro">
-            <p>Palavra: {{ palavraAdvinhada.join(' ') }}</p>
-        </div>
+    <div *ngIf="!jogoTerminado" class="conteudoJogo">
+        <div class="letreiroPrincipal">
+            <div class="quantidadeChutes">
+                <p class="chutesRestantes">{{ chutesRestantes }}</p>
+                <p class="labelChutes">Chutes restantes:</p>
+            </div>
 
-        <div class="quantidadeChutes">
-            <p>Chutes restantes: {{ chutesRestantes }}</p>
+            <div class="letreiro">
+                <p class="labelPalavra">Palavra:</p>
+                <p class="palavraAdivinhar">{{ palavraAdvinhada.join(' ') }}</p>
+            </div>
         </div>
 
         <div class="erros">

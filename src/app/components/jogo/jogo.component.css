@@ -1,0 +1,45 @@
+* {
+    font-family: 'Helvetica', sans-serif;
+}
+
+.jogoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.letreiroPrincipal {
+    display: flex;
+    align-items: flex-start;
+}
+
+.letreiro {
+    text-align: center;
+}
+
+.labelPalavra {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.palavraAdivinhar {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.quantidadeChutes {
+    margin-right: 200px;
+    font-size: 1rem;
+}
+
+.chutesRestantes {
+    text-align: center;
+
+}
+
+.labelChutes {
+    margin-bottom: 5px;
+    text-align: center;
+}
