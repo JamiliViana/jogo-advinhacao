@@ -1,5 +1,16 @@
 * {
     font-family: 'Helvetica', sans-serif;
+    font-weight: bold;
+}
+
+h1 {
+    letter-spacing: .15rem;
+}
+
+.conteudoJogo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .jogoContainer {
@@ -12,7 +23,9 @@
 
 .letreiroPrincipal {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .letreiro {
@@ -36,10 +49,40 @@
 
 .chutesRestantes {
     text-align: center;
-
 }
 
 .labelChutes {
     margin-bottom: 5px;
     text-align: center;
+}
+
+
+.botao {
+    background-color: #0cf;
+    border-radius: 10rem;
+    cursor: pointer;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    border: none;
+}
+
+.intefaceAdivinhacao {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.intefaceAdivinhacao input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+
+.intefaceAdivinhacao label {
+    margin-bottom: 5px;
 }

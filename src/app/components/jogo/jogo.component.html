@@ -1,11 +1,11 @@
 <div class="jogoContainer">
-    <h1>Jogo de adivinhação</h1>
+    <h1>Adivinhe a palavra</h1>
 
     <div *ngIf="!jogoTerminado" class="conteudoJogo">
         <div class="letreiroPrincipal">
             <div class="quantidadeChutes">
                 <p class="chutesRestantes">{{ chutesRestantes }}</p>
-                <p class="labelChutes">Chutes restantes:</p>
+                <p class="labelChutes">Chutes <br> disponíveis</p>
             </div>
 
             <div class="letreiro">
@@ -15,21 +15,21 @@
         </div>
 
         <div class="erros">
-            <p>Chutes errados: {{ chutesErrados.join(' - ') }}</p>
+            <p>Erros: {{ chutesErrados.join(' - ') }}</p>
         </div>
 
         <div class="intefaceAdivinhacao">
-            <label for="letraInput">Digite uma letra:</label>
+            <label>Digite uma letra:</label>
             <input id="letraInput" type="text" maxlength="1" (keyup.enter)="realizarChute()" [(ngModel)]="letraChute"
                 name="letraChute" placeholder="Digite uma letra" />
-            <button type="submit" (click)="realizarChute()">Chutar</button>
+            <button class="botao" type="submit" (click)="realizarChute()">OK</button>
         </div>
     </div>
 
-    <div class="jogoTerminou" *ngIf="jogoTerminado">
+    <div *ngIf="jogoTerminado">
         <p *ngIf="!jogoTerminado">Palavra Secreta: {{ palavraSecreta }}</p>
         <p *ngIf="jogoTerminado">{{ mensagemFimDeJogo }}</p>
-        <button (click)="novaRodada()">Jogar Novamente</button>
+        <button class="botao" (click)="novaRodada()">Jogar Novamente</button>
     </div>
 
 </div>
