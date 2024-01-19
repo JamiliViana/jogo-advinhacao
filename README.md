@@ -1,4 +1,4 @@
-# Jogo da adivinhação
+# Jogo de adivinhação
 
 O jogo é semelhante ao jogo forca, o jogador digita algumas letras, se a letra estiver presente na palavra secreta, a localização dessa letra aparecerá. Assim, o objetivo do jogador é adivinhar a palavra secreta.
 
